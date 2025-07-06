@@ -1,0 +1,157 @@
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+header {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  background-color: #218838;
+  color: white;
+  align-items: center;
+}
+
+header > a {
+  text-decoration: none;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.logo > a {
+  text-decoration: none;
+  color: white;
+}
+
+#barra-busqueda {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  width: 250px;
+}
+
+.carrito {
+  font-size: 1rem;
+}
+
+
+
+/* Seccion productos */
+
+#contenedor-productos{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+}
+
+.seccion-productos {
+  padding: 20px;
+}
+
+.card-producto {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+
+}
+
+.card-producto img {
+  width: 130px;
+  border-radius: 5px;
+  height: 180px;
+}
+
+.card-producto h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.card-producto p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.card-producto button{
+  background-color: #218838;
+  border-radius: 5px;
+  height: 30px;
+  color: white;
+}
+.card-producto button:hover {
+  background-color: #76d68b;
+}
+
+
+
+/* Seccion carrito */
+.seccion-carrito {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ccc;
+}
+
+#items-carrito {
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+.bloque-item{
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin: auto;
+  align-items: center;
+}
+
+.nombre-item, .info-carrito {
+  font-size: 20px;
+}
+
+.boton-eliminar {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.total-carrito {
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+#limpiar{
+  background-color: #333;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  height: 30px;
+  width: 100px;
+}
+
+#carrito-vacio{
+  justify-content: center;
+  margin-bottom: 10px;
+}

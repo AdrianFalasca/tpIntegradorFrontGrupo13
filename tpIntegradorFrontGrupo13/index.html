@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tp grupo 13</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script defer src="js/main.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <a href="index.html">
+            <div class="logo">Librería 13</div>
+        </a>
+        
+        <input type="text" placeholder="Buscar..." id="barra-busqueda">
+        
+        <div class="carrito">
+            <span>Carrito: <span id="contador-carrito">0</span> productos</span>
+        </div>
+    </header>
+
+    
+    <!-- Contenedor principal -->
+    <main>
+    <section class="seccion-productos">
+        <h2>Nuestros libros</h2>
+        
+        <div id="contenedor-productos"></div>
+    </section>
+
+
+    <!-- Seccion carrito -->
+    <section class="seccion-carrito" >
+        <h2>Carrito</h2>
+        
+        <div id="items-carrito">
+            
+        </div>
+
+        <div class="total-carrito">
+            <p>Total: <span id="precio-total">$0.00</span></p>
+        </div>
+    
+    </section>
+
+    </main>
+</body>
+</html>
