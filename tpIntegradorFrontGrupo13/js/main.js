@@ -3,8 +3,9 @@
 // Lista de objetos.
 let listaProductos = [];
 
-// es el contenedor donde se van a renderizar los productos
-let contenedorProductos = document.getElementById("contenedor-productos");
+// ---- contenedores de categorías ----
+const contenedorFilosofia  = document.getElementById("contenedor-filosofia");
+const contenedorLiteratura = document.getElementById("contenedor-literatura");
 
 // input de búsqueda. Cuando escribo llama a la función que filtra productos
 let inputBuscar = document.getElementById("barra-busqueda")
@@ -21,11 +22,25 @@ let itemsCarrito = document.getElementById("items-carrito");
 let contadorCarrito = document.getElementById("contador-carrito");
 
 
+const nombreUsuario = sessionStorage.getItem("userName");
+
+////////////////////comprobar sesión//////////////////
+
+if (!nombreUsuario) {
+    
+    window.location.replace("login.html");
+} else {
+
+    document.getElementById("saludo-usuario").textContent = `¡Hola, ${nombreUsuario}!`;
+}
+
+
+
 //////////////////////// Funciones ////////////////////////
 
 
 // Muestro los productos en el contenedor
-function mostrarProductos(listaProductos){
+function mostrarProductos(listaProductos, contenedorProductos){
     let htmlProductos = "";
 
     listaProductos.forEach(producto => {
@@ -42,13 +57,15 @@ function mostrarProductos(listaProductos){
 }
 
 // Filtro los productos según el texto ingresado en el input de búsqueda
-function filtrarProductos(){
-    let valorInput = inputBuscar.value;
-    let productosFiltrados = listaProductos.filter(producto =>
-        producto.name.toLowerCase().includes(valorInput.toLowerCase())
-    );
-    mostrarProductos(productosFiltrados);
+function filtrarProductos() {
+    const q = inputBuscar.value.toLowerCase();
+    const filosofia  = listaProductos.filter(p => p.category === "filosofia"  && p.name.toLowerCase().includes(q));
+    const literatura = listaProductos.filter(p => p.category === "literatura" && p.name.toLowerCase().includes(q));
+
+    mostrarProductos(filosofia,  contenedorFilosofia);
+    mostrarProductos(literatura, contenedorLiteratura);
 }
+
 
 // Muestro los productos del carrito
 function mostrarCarrito() {
@@ -111,22 +128,23 @@ function eliminarCarrito(id) {
 
 // Vacío todo el carrito y reinicio el total
 function limpiarCarrito(){
-    let totalCarritoProductos = 0;
-    let carritoProductos = [];
+    totalCarritoProductos = 0;
+    carritoProductos = [];
 
-    sessionStorage.setItem("Carrito", JSON.stringify(carritoProductos));
-    sessionStorage.setItem("Total", totalCarritoProductos.toString());
+    sessionStorage.setItem("Carrito", JSON.stringify([]));
+    sessionStorage.setItem("Total", "0");
 
     mostrarCarrito();
 }
 
 
-/* -------------------- Fetch de productos -------------------- */
+//Cargo los productos de una api
 
 async function cargarProductos() {
     try {
 
-    contenedorProductos.innerHTML = "<p>Cargando productos...</p>";
+    contenedorFilosofia.textContent  = "Cargando...";
+    contenedorLiteratura.textContent = "Cargando...";
 
     const res = await fetch("http://localhost:3000/api/products");
 
@@ -137,13 +155,19 @@ async function cargarProductos() {
     const data = await res.json();       
     listaProductos = data.payload;
 
-    mostrarProductos(listaProductos); 
+    
+    const librosFilosofia  = listaProductos.filter(p => p.category === "filosofia");
+    const librosLiteratura = listaProductos.filter(p => p.category === "literatura");
+
+    mostrarProductos(librosFilosofia,  contenedorFilosofia);
+    mostrarProductos(librosLiteratura, contenedorLiteratura);
+
             
     } catch (err) {
 
     console.error(err);
-    contenedorProductos.innerHTML =
-        "<p class='error'>No se pudieron cargar los productos.</p>";
+    contenedorFilosofia.innerHTML  = "<p class='error'>No se pudieron cargar los productos.</p>";
+    contenedorLiteratura.innerHTML = contenedorFilosofia.innerHTML;
     }
 }
 

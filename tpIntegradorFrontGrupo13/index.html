@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tp grupo 13</title>
+    <title>Librería 13</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 
     <script defer src="js/main.js"></script>
 </head>
@@ -15,12 +16,15 @@
     <header class="header">
 
         <a href="index.html">
-            <div class="logo">Librería 13</div>
+            
+            <div class="logo"><img class="img-logo" src="./img/logo.jpg" alt="Logo libreria"> Librería 13</div>
+            
         </a>
         
         <input type="text" placeholder="Buscar..." id="barra-busqueda">
-        
+        <span id="saludo-usuario"></span>
         <div class="carrito">
+            
             <span>Carrito: <span id="contador-carrito">0</span> productos</span>
         </div>
     </header>
@@ -28,26 +32,33 @@
     
     <!-- Contenedor principal -->
     <main>
-    <section class="seccion-productos">
         <h2>Nuestros libros</h2>
+        <hr>
+
+        <section class="seccion-productos">
+            <h2>Filosofía</h2>
+            <div id="contenedor-filosofia" class="contenedor-categoria"></div>
+        </section>
+
+        <hr>
+        <section class="seccion-productos">
+            <h2>Literatura</h2>
+            <div id="contenedor-literatura" class="contenedor-categoria"></div>
+        </section>
+
+        <!-- Seccion carrito -->
+        <section class="seccion-carrito" >
+            <h2>Carrito</h2>
+
+            <div id="items-carrito">
+
+            </div>
+
+            <div class="total-carrito">
+                <p>Total: <span id="precio-total">$0.00</span></p>
+            </div>
         
-        <div id="contenedor-productos"></div>
-    </section>
-
-
-    <!-- Seccion carrito -->
-    <section class="seccion-carrito" >
-        <h2>Carrito</h2>
-        
-        <div id="items-carrito">
-            
-        </div>
-
-        <div class="total-carrito">
-            <p>Total: <span id="precio-total">$0.00</span></p>
-        </div>
-    
-    </section>
+        </section>
 
     </main>
 </body>
